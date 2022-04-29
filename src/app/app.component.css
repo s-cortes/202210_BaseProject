@@ -1,3 +1,10 @@
 * [lang^=en] {
   color: green;
 }
+
+.image-strech {
+  min-width: inherit;
+  width: inherit;
+  aspect-ratio: 6;
+}
+

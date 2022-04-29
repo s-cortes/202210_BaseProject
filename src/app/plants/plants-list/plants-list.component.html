@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-8">
+    <table class="table">
+      <thead>
+        <tr class="table-dark">
+          <th scope="col">#</th>
+          <th scope="col">Nombre común</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Clima</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="plants.length" >
+        <tr *ngFor="let plant of plants; let i = index" [attr.data-index]="i">
+          <th scope="row">{{i}}</th>
+          <td class="common-name">{{plant.nombre_comun}}</td>
+          <td class="type">{{plant.tipo}}</td>
+          <td class="weather">{{plant.clima}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div id="plantMetadata" class="row" *ngIf="plants.length" >
+  <div class="col">
+    <p class="mb-0" *ngFor="let tipo of getPlantTypes()">
+    Total plantas de {{tipo}}: <span [id]="tipo+'Count'">{{getCountByPlantType(tipo)}}</span>
+    </p>
+  </div>
+</div>

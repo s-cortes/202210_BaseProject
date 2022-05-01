@@ -21,7 +21,9 @@ describe('Service: Plant', () => {
       new Plant(1, "Lengua de vaca", "Sansevieria Trifasciata", PlantType.Interior, 140,
         "Templado, cálido", "Tierra orgánica con buen drenaje, arena, cascarilla de arroz"),
       new Plant(2, "Chachafruto", "Schefflera actinophylla", PlantType.Exterior, 1000,
-        "Todos", "Sustrato para huerto")
+        "Todos", "Sustrato para huerto"),
+      new Plant(3, "Espatifilo", "Spathiphyllum Wallasii", PlantType.Interior, 65,
+        "Templado, cálido", "Tierra orgánica")
     ];
 
     let httpClientSpy: jasmine.SpyObj<HttpClient>;

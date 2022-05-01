@@ -20,9 +20,11 @@ describe('PlantsListComponent', () => {
     new Plant(1, "Lengua de vaca", "Sansevieria Trifasciata", PlantType.Interior, 140,
       "Templado, cálido", "Tierra orgánica con buen drenaje, arena, cascarilla de arroz"),
     new Plant(2, "Chachafruto", "Schefflera actinophylla", PlantType.Exterior, 1000,
-      "Todos", "Sustrato para huerto")
+      "Todos", "Sustrato para huerto"),
+    new Plant(3, "Espatifilo", "Spathiphyllum Wallasii", PlantType.Interior, 65,
+      "Templado, cálido", "Tierra orgánica")
   ];
-  const usedTypes: string[] = expectedPlants.map(plant => plant.tipo);
+  const usedTypes: Set<string> = new Set(expectedPlants.map(plant => plant.tipo));
 
   let component: PlantsListComponent;
   let fixture: ComponentFixture<PlantsListComponent>;
@@ -93,7 +95,9 @@ describe('PlantsListComponent', () => {
     });
 
     it('Should Render Type Counts', () => {
-      plantServiceSpy.countPlantsByType.and.returnValue(1);
+      plantServiceSpy.countPlantsByType.and.callFake((plants: Plant[], type:string) => {
+        return type === PlantType.Interior ? 2 : 1;
+      });
 
       component.plants = expectedPlants;
       fixture.detectChanges();
